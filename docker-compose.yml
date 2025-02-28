@@ -9,3 +9,16 @@ services:
     environment:
       - NODE_ENV=development
     command: npm run start
+
+  oauth2:
+    build:
+      context: ./oauth
+      dockerfile: Dockerfile
+    ports:
+      - "9096:9096"
+    environment:
+      - USER_DB_HOST=userdb
+      - USER_DB_PORT=3306
+      - USER_DB_NAME=oauth2
+      - USER_DB_USER=ai_shopper_dev
+      - USER_DB_PASSWORD=password
