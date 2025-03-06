@@ -16,6 +16,11 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
+    environment:
+      - GOOGLE_MAPS_API_KEY=AIzaSyAjCRzc5Pfl1Tm2ieto76tV-6f5Bx_BK5s
+      - CORS_ALLOW_ORIGINS=http://localhost:5173,http://localhost:3000
+      - CORS_ALLOW_METHODS=GET,POST,PUT,PATCH,DELETE,OPTIONS
+      - CORS_ALLOW_HEADERS=Origin,Content-Type,Accept,Authorization
 
   # oauth2:
   #   build:
