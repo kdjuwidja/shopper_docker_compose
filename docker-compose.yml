@@ -21,6 +21,9 @@ services:
       - CORS_ALLOW_ORIGINS=http://localhost:5173,http://localhost:3000
       - CORS_ALLOW_METHODS=GET,POST,PUT,PATCH,DELETE,OPTIONS
       - CORS_ALLOW_HEADERS=Origin,Content-Type,Accept,Authorization
+      - PLACE_SEARCH_RESULT_LIMIT=20
+      - PLACE_INCLUDED_TYPES=supermarket,department_store
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:29092
 
   # oauth2:
   #   build:
