@@ -25,6 +25,17 @@ services:
       - PLACE_INCLUDED_TYPES=supermarket,department_store
       - KAFKA_BOOTSTRAP_SERVERS=kafka:29092
 
+  service:
+    build:
+      context: ./service
+      dockerfile: Dockerfile
+    deploy:
+      replicas: 2
+    environment:
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:29092
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+
   # oauth2:
   #   build:
   #     context: ./oauth
