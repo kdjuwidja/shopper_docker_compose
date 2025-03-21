@@ -23,29 +23,37 @@ services:
       - CORS_ALLOW_HEADERS=Origin,Content-Type,Accept,Authorization
       - PLACE_SEARCH_RESULT_LIMIT=20
       - PLACE_INCLUDED_TYPES=supermarket,department_store
-      - KAFKA_BOOTSTRAP_SERVERS=kafka:29092
+      - JWT_SECRET=my-secret-key
+      - AI_SHOPPER_CORE_DB_HOST=userdb
+      - AI_SHOPPER_CORE_DB_PORT=3306
+      - AI_SHOPPER_CORE_DB_NAME=ai_shopper_core
+      - AI_SHOPPER_CORE_DB_USER=ai_shopper_dev
+      - AI_SHOPPER_CORE_DB_PASSWORD=password
+      - AI_SHOPPER_CORE_DB_MAX_OPEN_CONNS=25
+      - AI_SHOPPER_CORE_DB_MAX_IDLE_CONNS=10
 
-  service:
-    build:
-      context: ./service
-      dockerfile: Dockerfile
-    deploy:
-      replicas: 2
-    environment:
-      - KAFKA_BOOTSTRAP_SERVERS=kafka:29092
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
-
-  # oauth2:
+  # service:
   #   build:
-  #     context: ./oauth
+  #     context: ./service
   #     dockerfile: Dockerfile
-  #   ports:
-  #     - "9096:9096"
   #   environment:
-  #     - USER_DB_HOST=userdb
-  #     - USER_DB_PORT=3306
-  #     - USER_DB_NAME=oauth2
-  #     - USER_DB_USER=ai_shopper_dev
-  #     - USER_DB_PASSWORD=password
-      
+  #     - KAFKA_BOOTSTRAP_SERVERS=kafka:29092
+  #     - REDIS_HOST=redis
+  #     - REDIS_PORT=6379
+
+  auth:
+    build:
+      context: ./auth
+      dockerfile: Dockerfile
+    ports:
+      - "9096:9096"
+    environment:
+      - USER_DB_HOST=userdb
+      - USER_DB_PORT=3306
+      - USER_DB_NAME=oauth2
+      - USER_DB_USER=ai_shopper_dev
+      - USER_DB_PASSWORD=password
+      - CORS_ALLOW_ORIGINS=http://localhost:5173,http://localhost:3000
+      - CORS_ALLOW_METHODS=GET,POST,PUT,PATCH,DELETE,OPTIONS
+      - CORS_ALLOW_HEADERS=Origin,Content-Type,Accept,Authorization
+      - JWT_SECRET=my-secret-key
