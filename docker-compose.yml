@@ -50,10 +50,11 @@ services:
     environment:
       - USER_DB_HOST=userdb
       - USER_DB_PORT=3306
-      - USER_DB_NAME=oauth2
+      - USER_DB_NAME=ai_shopper_auth
       - USER_DB_USER=ai_shopper_dev
       - USER_DB_PASSWORD=password
       - CORS_ALLOW_ORIGINS=http://localhost:5173,http://localhost:3000
       - CORS_ALLOW_METHODS=GET,POST,PUT,PATCH,DELETE,OPTIONS
       - CORS_ALLOW_HEADERS=Origin,Content-Type,Accept,Authorization
       - JWT_SECRET=my-secret-key
+      - IS_LOCAL_DEV=true
