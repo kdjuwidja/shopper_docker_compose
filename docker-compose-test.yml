@@ -1,0 +1,14 @@
+services: 
+  testdb:
+    image: mysql:8.0
+    ports:
+      - "4306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_USER=ai_shopper_dev
+      - MYSQL_PASSWORD=password
+    volumes:
+      - testdb_data:/var/lib/mysql
+
+volumes:
+  testdb_data:
