@@ -32,7 +32,8 @@ services:
       - AI_SHOPPER_CORE_DB_MAX_OPEN_CONNS=25
       - AI_SHOPPER_CORE_DB_MAX_IDLE_CONNS=10
       - GIN_MODE=release
-      - LOG_LEVEL=info
+      - SERVICE_NAME=core
+      - LOG_LEVEL=debug
 
   # service:
   #   build:
