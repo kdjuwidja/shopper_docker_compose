@@ -61,3 +61,5 @@ services:
       - CORS_ALLOW_HEADERS=Origin,Content-Type,Accept,Authorization
       - JWT_SECRET=my-secret-key
       - IS_LOCAL_DEV=true
+      - SERVICE_NAME=auth
+      - LOG_LEVEL=debug
