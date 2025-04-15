@@ -10,6 +10,16 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
 
+  redis:
+    image: redis:7.0
+    ports:
+      - "6379:6379"
+    environment:
+      - REDIS_ARGS=--requirepass password --user default on ~* +@all
+    volumes:
+      - redis_data:/data
+
+
   # zookeeper:
   #   image: confluentinc/cp-zookeeper:7.4.0
   #   ports:
@@ -53,3 +63,4 @@ services:
 
 volumes:
   mysql_data:
+  redis_data:
