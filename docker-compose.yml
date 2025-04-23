@@ -31,6 +31,8 @@ services:
       - AI_SHOPPER_CORE_DB_PASSWORD=password
       - AI_SHOPPER_CORE_DB_MAX_OPEN_CONNS=25
       - AI_SHOPPER_CORE_DB_MAX_IDLE_CONNS=10
+      - ELASTICSEARCH_HOST=elasticsearch
+      - ELASTICSEARCH_PORT=9200
       - GIN_MODE=release
       - SERVICE_NAME=core
       - LOG_LEVEL=debug
@@ -68,3 +70,15 @@ services:
       - REDIS_USER=default
       - REDIS_PASSWORD=password
       - MAX_NUM_KEYS=5
+
+  scraper:
+    build: 
+      context: ./scraper
+      dockerfile: Dockerfile
+    environment:
+      ES_NODE: http://elasticsearch:9200
+      PORT: 4000
+      LOG_LEVEL: debug
+    ports:
+      - "4000:4000"
+    restart: always

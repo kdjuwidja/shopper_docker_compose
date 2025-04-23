@@ -19,6 +19,19 @@ services:
     volumes:
       - redis_data:/data
 
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.9.0
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - action.destructive_requires_name=false # allow index deletion with wildcard, should only be used in development
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+    restart: always
+
 
   # zookeeper:
   #   image: confluentinc/cp-zookeeper:7.4.0
@@ -64,3 +77,4 @@ services:
 volumes:
   mysql_data:
   redis_data:
+  es_data:
