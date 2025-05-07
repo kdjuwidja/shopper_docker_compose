@@ -1,4 +1,4 @@
-# ai_shopper_docker_compose
+# shopper_docker_compose
 This docker-compose directory is for tracking/version control purposes only.
 
 To use the docker-compose configuration:
