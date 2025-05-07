@@ -55,6 +55,14 @@ services:
       - CORS_ALLOW_HEADERS=Origin,Content-Type,Accept,Authorization
       - JWT_SECRET=my-secret-key
       - IS_LOCAL_DEV=true
+      - DEFAULT_USER_IDS=<<list of uuids without hyphens, seperated by comma>>
+      - DEFAULT_USER_EMAILS=<<list of emails, seperated by comma>>
+      - DEFAULT_PASSWORDS=<<list of passwords, bcrypt hashed, seperated by comma. Remember to escape the dollar sign>>
+      - DEFAULT_CLIENT_ID=82ce1a881b304775ad288e57e41387f3
+      - DEFAULT_CLIENT_SECRET=my_secret
+      - DEFAULT_CLIENT_DOMAIN=http://localhost:3000
+      - DEFAULT_IS_PUBLIC=1
+      - DEFAULT_DESCRIPTION=Default client for shopper app
       - SERVICE_NAME=auth
       - LOG_LEVEL=trace
       - REDIS_HOST=redis
