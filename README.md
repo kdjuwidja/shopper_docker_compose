@@ -10,16 +10,16 @@ The docker-compose file needs to be at the root level to properly resolve the re
 Code bases that you will need:
 - [auth] (https://github.com/kdjuwidja/auth)
 - [core] (https://github.com/kdjuwidja/ai_shopper_core)
-- [service] (https://github.com/kdjuwidja/ai_shopper_service)
 - [webapp] (https://github.com/kdjuwidja/ai_shopper_webapp)
+- [scraper] (https://github.com/timmy-netherrealm/flyers_scraper)
 
 ## Setup Procedures
-1. Clone all required codebases:
+1. Clone all required codebases. (e.g. using https):
    ```bash
    git clone https://github.com/kdjuwidja/auth.git
    git clone https://github.com/kdjuwidja/ai_shopper_core.git
-   git clone https://github.com/kdjuwidja/ai_shopper_service.git
    git clone https://github.com/kdjuwidja/ai_shopper_webapp.git
+   git clone https://github.com/kdjuwidja/auth.git
    ```
 
 2. Set up project structure:
@@ -30,13 +30,13 @@ Code bases that you will need:
      ├── auth/
      ├── core/
      ├── docker-compose/
-     ├── service/
+     ├── scraper/
      ├── webapp/
      ├── docker-compose-infra.yml
      └── docker-compose.yml
      ```
 
-3. Set up the MySQL database:
+3. Set up the infra:
    ```bash
    docker-compose -f docker-compose-infra.yml up -d
    ```
@@ -58,7 +58,7 @@ Code bases that you will need:
 
 5. Configure development environment:
    - Open `docker-compose.yml`
-   - Set `IS_LOCAL_DEV=true` in the auth service configuration
+   - Set `IS_LOCAL_DEV=true` in the auth service configuration, this will automatically populate database with api clients and default users.
 
 6. Start the application:
    ```bash
@@ -71,4 +71,4 @@ Code bases that you will need:
 
 ## Testing
 1. Open an incognito browser window
-2. Visit http://localhost:3000
+2. Visit http://localhost:3000/shopper
