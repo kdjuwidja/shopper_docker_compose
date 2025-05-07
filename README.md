@@ -59,6 +59,7 @@ Code bases that you will need:
 5. Configure development environment:
    - Open `docker-compose.yml`
    - Set `IS_LOCAL_DEV=true` in the auth service configuration, this will automatically populate database with api clients and default users.
+   - Edit `DEFAULT_USER_IDS`, `DEFAULT_USER_EMAILS`, `DEFAULT_PASSWORDS`, `DEFAULT_CLIENT_ID`, `DEFAULT_CLIENT_SECRET`, `DEFAULT_CLIENT_DOMAIN`, `DEFAULT_IS_PUBLIC`, `DEFAULT_DESCRIPTION` under the service auth.
 
 6. Start the application:
    ```bash
