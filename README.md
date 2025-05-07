@@ -9,16 +9,16 @@ The docker-compose file needs to be at the root level to properly resolve the re
 
 Code bases that you will need:
 - [auth] (https://github.com/kdjuwidja/auth)
-- [core] (https://github.com/kdjuwidja/ai_shopper_core)
-- [webapp] (https://github.com/kdjuwidja/ai_shopper_webapp)
+- [core] (https://github.com/kdjuwidja/shopper_core)
+- [webapp] (https://github.com/kdjuwidja/shopper_webapp)
 - [scraper] (https://github.com/timmy-netherrealm/flyers_scraper)
 
 ## Setup Procedures
 1. Clone all required codebases. (e.g. using https):
    ```bash
    git clone https://github.com/kdjuwidja/auth.git
-   git clone https://github.com/kdjuwidja/ai_shopper_core.git
-   git clone https://github.com/kdjuwidja/ai_shopper_webapp.git
+   git clone https://github.com/kdjuwidja/shopper_core.git
+   git clone https://github.com/kdjuwidja/shopper_webapp.git
    git clone https://github.com/kdjuwidja/auth.git
    ```
 
