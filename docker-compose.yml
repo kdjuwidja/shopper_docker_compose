@@ -4,11 +4,22 @@ services:
       context: ./webapp
       dockerfile: Dockerfile
     ports:
-      - "5173:5173"  # Development port
       - "3000:3000"  # Production port
     environment:
       - NODE_ENV=development
       - VITE_BASE_PATH=/shopper
+    command: npm run start
+
+  adminapp:
+    build:
+      context: ./adminapp
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=development
+      - VITE_BASE_PATH=/admin
+      - PORT=5000
     command: npm run start
 
   core:
@@ -53,22 +64,21 @@ services:
       - CORS_ALLOW_ORIGINS=http://localhost:5173,http://localhost:3000
       - CORS_ALLOW_METHODS=GET,POST,PUT,PATCH,DELETE,OPTIONS
       - CORS_ALLOW_HEADERS=Origin,Content-Type,Accept,Authorization
+      - DEFAULT_USER_1_EMAIL=<<DEFAULT_USER_1_EMAIL>>
+      - DEFAULT_USER_1_PASSWORD=<<DEFAULT_USER_1_PASSWORD>>
+      - DEFAULT_USER_2_EMAIL=<<DEFAULT_USER_2_EMAIL>>
+      - DEFAULT_USER_2_PASSWORD=<<DEFAULT_USER_2_PASSWORD>>
       - JWT_SECRET=my-secret-key
       - IS_LOCAL_DEV=true
-      - DEFAULT_USER_IDS=<<list of uuids without hyphens, seperated by comma>>
-      - DEFAULT_USER_EMAILS=<<list of emails, seperated by comma>>
-      - DEFAULT_PASSWORDS=<<list of passwords, bcrypt hashed, seperated by comma. Remember to escape the dollar sign>>
-      - DEFAULT_CLIENT_ID=82ce1a881b304775ad288e57e41387f3
-      - DEFAULT_CLIENT_SECRET=my_secret
-      - DEFAULT_CLIENT_DOMAIN=http://localhost:3000
-      - DEFAULT_IS_PUBLIC=1
-      - DEFAULT_DESCRIPTION=Default client for shopper app
       - SERVICE_NAME=auth
+      - AUTH_ROUTE_NAME=auth
+      - ACC_ROUTE_NAME=account
       - LOG_LEVEL=trace
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - REDIS_USER=default
       - REDIS_PASSWORD=password
+      - RESTRICT_NUM_KEYS=false
       - MAX_NUM_KEYS=5
 
   scraper:
